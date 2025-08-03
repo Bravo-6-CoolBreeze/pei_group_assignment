@@ -29,14 +29,11 @@ The implementation is designed to run on Databricks (Free or Paid Edition) and i
 
 - **Databricks Environment**: Access to Databricks (Community Edition or Paid version).
 - **Libraries**: Ensure the following Python libraries are installed on your Databricks cluster:
-  - `pytest`
-  - `pandas`
   - `openpyxl`
   - Install via the cluster's library management or run:
     ```bash
-    %pip install pytest pandas openpyxl
+    %pip install openpyxl
     ```
-- **File System**: A writable DBFS path (e.g., `/dbfs/tmp/`) for temporary files during testing.
 
 ## Setup and Execution Instructions
 
@@ -72,44 +69,6 @@ The implementation is designed to run on Databricks (Free or Paid Edition) and i
 6. **Helper Functions**:
    - The `sales_data_processing_helper.ipynb` notebook contains reusable functions imported by the main and test notebooks. Ensure it’s accessible in the workspace (e.g., via `/FileStore/scripts/`).
 
-## Running in Databricks Community Edition
-
-The Community Edition has limitations, such as no Unity Catalog support. To ensure compatibility:
-- Replace volume paths (e.g., `/Volumes/sales/`) with `/dbfs/tmp/<unique_id>/` in the notebooks.
-- Use the provided cleanup functions to remove temporary files and Delta tables after tests.
-- Verify that the cluster has sufficient resources (e.g., memory) for Spark operations.
-
-## Testing and Validation
-
-The `tests_sales_data_processing.ipynb` notebook includes comprehensive unit tests using `pytest`:
-- Tests cover data ingestion, cleaning, transformation, and aggregation.
-- Edge cases include invalid file formats, empty datasets, and missing data.
-- Each test includes cleanup to avoid residual files or tables.
-
-To run tests:
-1. Ensure the `sales_data_processing_helper.ipynb` functions are accessible.
-2. Execute the test notebook and review the output for `PASSED`, `FAILED`, or `ERROR` messages.
-3. Verify cleanup with:
-   ```python
-   display(dbutils.fs.ls("/tmp/"))
-   spark.sql("SHOW TABLES IN test").show()
-   ```
-
-## Troubleshooting
-
-- **File Path Errors**:
-  - If you encounter `OSError: [Errno 5] Input/output error`, ensure the file path (e.g., `/dbfs/tmp/`) is writable and correctly formatted.
-  - Use unique temporary directories (e.g., `/dbfs/tmp/test_<uuid>/`) to avoid conflicts.
-
-- **Library Issues**:
-  - Confirm that `pytest`, `pandas`, and `openpyxl` are installed on the cluster.
-  - Run `%pip install pytest pandas openpyxl` in the notebook if needed.
-
-- **Delta Table Cleanup**:
-  - If tests leave residual tables, run:
-    ```python
-    spark.sql("DROP TABLE IF EXISTS test.<table_name>")
-    ```
 
 ## Future Improvements
 
@@ -119,4 +78,4 @@ To run tests:
 
 ## Contact
 
-For questions or feedback, please contact [your-email@example.com] or open an issue on this repository.
+For questions or feedback, please contact up.vivek.up@gmail.com or open an issue on this repository.
