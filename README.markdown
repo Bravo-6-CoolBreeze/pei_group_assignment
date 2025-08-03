@@ -14,7 +14,7 @@ The implementation is designed to run on Databricks (Free or Paid Edition) and i
 ## Assumptions
 
 - **Development Environment**: The solution was developed on Databricks notebooks, as specified in the assignment.
-- **Databricks Free Edition**: The Community Edition was used, which has limitations such as no support for Unity Catalog volumes. The code is compatible with both Free and Paid editions.
+- **Databricks Free Edition**: Databricks Free Edition (not previous Community Edition) was used, which has some limitations. The code is compatible with both Free and Paid editions.
 - **Data Quality**: The datasets are assumed to have no duplicate records. If duplicates exist, additional test cases and data cleaning logic (e.g., deduplication) would be required, pending further clarification on handling duplicates.
 
 ## Repository Structure
