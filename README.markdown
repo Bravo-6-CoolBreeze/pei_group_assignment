@@ -67,7 +67,7 @@ The implementation is designed to run on Databricks (Free or Paid Edition) and i
    - The tests include edge cases (e.g., invalid files, empty datasets).
 
 6. **Helper Functions**:
-   - The `sales_data_processing_helper.ipynb` notebook contains reusable functions imported by the main and test notebooks. Ensure it’s accessible in the workspace (e.g., via `/FileStore/scripts/`).
+   - The `sales_data_processing_helper.ipynb` notebook contains reusable functions imported by the main and test notebooks. Ensure it’s accessible in the workspace (Please use the same folder structure as present in the repo).
 
 
 ## Future Improvements
